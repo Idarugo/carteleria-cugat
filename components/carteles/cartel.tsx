@@ -3,7 +3,6 @@ import { esAgotarStock, formatPrecio, formatPesos } from "@/lib/cartel-utils"
 
 function separarFechaCartel(fecha: string) {
   const limpia = fecha.trim().toUpperCase()
-
   if (!limpia) return { dia: "", mes: "" }
 
   const partes = limpia.split(/\s+/)
@@ -43,11 +42,11 @@ function Vigencia({
     const hastaF = separarFechaCartel(hasta)
 
     return (
-      <div className={className}>
-        <span>{desdeF.dia}</span>
-        <span>{desdeF.mes}</span>
-        <span>{hastaF.dia}</span>
-        <span>{hastaF.mes}</span>
+      <div className={`${className} relative h-[12px]`}>
+        <span className="absolute left-[44px]">{desdeF.dia}</span>
+        <span className="absolute left-[82px]">{desdeF.mes}</span>
+        <span className="absolute left-[150px]">{hastaF.dia}</span>
+        <span className="absolute left-[190px]">{hastaF.mes}</span>
       </div>
     )
   }
@@ -218,7 +217,7 @@ function CartelX4({ p }: { p: Producto }) {
           desde={p.desde}
           hasta={p.hasta}
           modo="x4"
-          className="mx-auto mt-[3px] grid w-[170px] grid-cols-4 items-center gap-1 text-center font-mono text-[8px] font-bold italic leading-none"
+          className="mt-[7px] font-mono text-[8px] font-bold italic leading-none"
         />
       </div>
     </div>
