@@ -44,11 +44,11 @@ if (modo === "x4") {
 
   return (
     <div className={`${className} relative h-[12px]`}>
-      <span className="absolute left-[18px]">{desdeF.dia}</span>
-      <span className="absolute left-[58px]">{desdeF.mes}</span>
+      <span className="absolute left-[20px]">{desdeF.dia}</span>
+      <span className="absolute left-[60px]">{desdeF.mes}</span>
 
-      <span className="absolute left-[128px]">{hastaF.dia}</span>
-      <span className="absolute left-[170px]">{hastaF.mes}</span>
+      <span className="absolute left-[132px]">{hastaF.dia}</span>
+      <span className="absolute left-[173px]">{hastaF.mes}</span>
     </div>
   )
 }
