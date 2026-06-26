@@ -135,8 +135,8 @@ export function useScanner({
     const next = !torchOn
     try {
       await track.applyConstraints({
-        advanced: [{ torch: next } as MediaTrackConstraintSet],
-      })
+        advanced: [{ torch: next }],
+      } as unknown as MediaTrackConstraints)
       setTorchOn(next)
     } catch (err) {
       console.error('[scanner] torch:', err)

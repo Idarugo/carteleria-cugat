@@ -44,15 +44,16 @@ self.addEventListener('fetch', (event) => {
   // Nunca cachear la API: precios frescos.
   if (url.pathname.startsWith('/api/')) return
 
-  // Navegaciones: network-first con fallback al shell de /consulta.
+  // Navegaciones: solo intervenimos en /consulta (network-first con fallback
+  // al shell). El resto del sitio (carteles) conserva su comportamiento nativo.
   if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request).catch(() =>
-        url.pathname.startsWith('/consulta')
-          ? caches.match(SHELL).then((r) => r || Response.error())
-          : Response.error(),
-      ),
-    )
+    if (url.pathname.startsWith('/consulta')) {
+      event.respondWith(
+        fetch(request).catch(() =>
+          caches.match(SHELL).then((r) => r || Response.error()),
+        ),
+      )
+    }
     return
   }
 

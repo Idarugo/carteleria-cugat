@@ -100,7 +100,19 @@ export function ProductResult({
         variants={item}
         className="rounded-3xl border border-border bg-card/60 p-6 shadow-sm backdrop-blur"
       >
-        {onSale ? (
+        {product.price <= 0 ? (
+          <div className="flex flex-col gap-1">
+            <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+              Precio
+            </span>
+            <span className="text-3xl font-bold tracking-tight text-muted-foreground">
+              No disponible
+            </span>
+            <span className="text-sm text-muted-foreground">
+              Consulta el precio en caja.
+            </span>
+          </div>
+        ) : onSale ? (
           <div className="flex flex-col gap-1">
             <div className="flex items-baseline gap-3">
               <span className="text-lg font-medium text-muted-foreground line-through decoration-2">

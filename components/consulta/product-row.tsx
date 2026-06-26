@@ -44,18 +44,26 @@ export function ProductRow({
             {product.code}
           </span>
           <span className="mt-0.5 flex items-center gap-2">
-            <span
-              className={cn(
-                'text-sm font-bold tabular-nums',
-                product.onSale && 'text-red-600 dark:text-red-400',
-              )}
-            >
-              {formatCLP(product.price)}
-            </span>
-            {product.onSale && (
-              <span className="text-xs font-medium text-muted-foreground line-through">
-                {formatCLP(product.regularPrice)}
+            {product.price <= 0 ? (
+              <span className="text-sm font-medium text-muted-foreground">
+                Sin precio
               </span>
+            ) : (
+              <>
+                <span
+                  className={cn(
+                    'text-sm font-bold tabular-nums',
+                    product.onSale && 'text-red-600 dark:text-red-400',
+                  )}
+                >
+                  {formatCLP(product.price)}
+                </span>
+                {product.onSale && (
+                  <span className="text-xs font-medium text-muted-foreground line-through">
+                    {formatCLP(product.regularPrice)}
+                  </span>
+                )}
+              </>
             )}
           </span>
         </div>

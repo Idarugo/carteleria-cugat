@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { ChevronLeft } from 'lucide-react'
 
@@ -36,6 +36,13 @@ export function ConsultaApp() {
     if (!code) return
     setActiveCode(code)
   }, [])
+
+  // Deep-link: /consulta?code=7801234567890 abre el producto directo
+  // (útil para códigos QR en góndola o enlaces compartibles).
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get('code')
+    if (code) handleCode(code)
+  }, [handleCode])
 
   const handleResolved = useCallback(
     (product: Product) => {

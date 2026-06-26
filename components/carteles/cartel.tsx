@@ -38,20 +38,20 @@ function Vigencia({
     return <div className={className}>VÁLIDO HASTA AGOTAR STOCK</div>
   }
 
-if (modo === "x4") {
-  const desdeF = separarFechaCartel(desde)
-  const hastaF = separarFechaCartel(hasta)
+  if (modo === "x4") {
+    const desdeF = separarFechaCartel(desde)
+    const hastaF = separarFechaCartel(hasta)
 
-  return (
-<div className={`${className} relative h-[40px] translate-y-[5px]`}>
-      <span className="absolute left-[30px]">{desdeF.dia}</span>
-      <span className="absolute left-[70px]">{desdeF.mes}</span>
+    return (
+      <div className={`${className} relative h-[10px] translate-y-[5px]`}>
+        <span className="absolute left-[30px]">{desdeF.dia}</span>
+        <span className="absolute left-[70px]">{desdeF.mes}</span>
 
-      <span className="absolute left-[160px]">{hastaF.dia}</span>
-      <span className="absolute left-[196px]">{hastaF.mes}</span>
-    </div>
-  )
-}
+        <span className="absolute left-[160px]">{hastaF.dia}</span>
+        <span className="absolute left-[199px]">{hastaF.mes}</span>
+      </div>
+    )
+  }
 
   return (
     <div className={className}>
@@ -215,12 +215,12 @@ function CartelX4({ p }: { p: Producto }) {
           {p.ahorro > 0 && <span>Ahorro: {formatPesos(p.ahorro)}</span>}
         </div>
 
-<Vigencia
-  desde={p.desde}
-  hasta={p.hasta}
-  modo="x4"
-  className="mx-auto mt-[45px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
-/>
+        <Vigencia
+          desde={p.desde}
+          hasta={p.hasta}
+          modo="x4"
+          className="mx-auto mt-[45px] w-[205px] font-mono text-[10px] font-extrabold italic leading-none tracking-tight"
+        />
       </div>
     </div>
   )

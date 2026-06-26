@@ -73,10 +73,11 @@ export async function searchByName(
   const q = query.trim()
   if (q.length < 2) return []
 
+  // La Store API ya ordena por relevancia cuando hay `search`; no se pasa
+  // `orderby` porque 'relevance' no es un valor válido y devuelve HTTP 400.
   const found = await fetchProducts({
     search: q,
     per_page: String(Math.min(Math.max(limit, 1), 50)),
-    orderby: 'relevance',
   })
   return found.map(normalizeProduct)
 }
