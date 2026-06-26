@@ -1,11 +1,55 @@
 import type { Producto, Formato } from "@/lib/types"
 import { esAgotarStock, formatPrecio, formatPesos } from "@/lib/cartel-utils"
 
-function Vigencia({ desde, hasta, className }: { desde: string; hasta: string; className?: string }) {
+function separarFechaCartel(fecha: string) {
+  const limpia = fecha.trim().toUpperCase()
+
+  if (!limpia) return { dia: "", mes: "" }
+
+  const partes = limpia.split(/\s+/)
+
+  if (partes.length >= 2) {
+    return {
+      dia: partes[0],
+      mes: partes.slice(1).join(" "),
+    }
+  }
+
+  return {
+    dia: limpia,
+    mes: "",
+  }
+}
+
+function Vigencia({
+  desde,
+  hasta,
+  className,
+  modo = "normal",
+}: {
+  desde: string
+  hasta: string
+  className?: string
+  modo?: "normal" | "x4"
+}) {
   if (!desde && !hasta) return null
 
   if (hasta && esAgotarStock(hasta)) {
     return <div className={className}>VÁLIDO HASTA AGOTAR STOCK</div>
+  }
+
+  if (modo === "x4") {
+    const desdeF = separarFechaCartel(desde)
+    const hastaF = separarFechaCartel(hasta)
+
+    return (
+      <div className={className}>
+        <span>{desdeF.dia}</span>
+        <span>{desdeF.mes}</span>
+        <span>{hastaF.dia}</span>
+        <span>{hastaF.mes}</span>
+      </div>
+    )
   }
 
   return (
@@ -32,6 +76,7 @@ function PrecioPrincipal({
         <div className={`font-display -skew-x-6 uppercase ${promoClassName}`}>
           {p.promoCantidad}
         </div>
+
         <div className={`font-display -skew-x-6 ${precioClassName}`}>
           <span className={`align-top ${pesoClassName}`}>$</span>
           {formatPrecio(p.precioOferta)}
@@ -139,8 +184,8 @@ function CartelX2({ p }: { p: Producto }) {
 /* ---------------------------- X4 (4 por hoja) ---------------------------- */
 function CartelX4({ p }: { p: Producto }) {
   return (
-      <div className="flex h-full flex-col px-7 pt-[132px] pb-[18px] text-black">
-        <h2 className="font-display -skew-x-6 text-balance text-center text-[22px] uppercase leading-[1.02]">
+    <div className="flex h-full flex-col px-7 pt-[132px] pb-[18px] text-black">
+      <h2 className="font-display -skew-x-6 text-balance text-center text-[22px] uppercase leading-[1.02]">
         {p.descripcion}
       </h2>
 
@@ -157,7 +202,7 @@ function CartelX4({ p }: { p: Producto }) {
         />
       </div>
 
-      <div className="pb-[18px]">
+      <div className="pb-[20px]">
         {p.precioUnidad && (
           <div className="font-display text-[16px] uppercase">
             {p.unidadLabel} {p.precioUnidad}
@@ -172,7 +217,8 @@ function CartelX4({ p }: { p: Producto }) {
         <Vigencia
           desde={p.desde}
           hasta={p.hasta}
-          className="mt-1 text-center font-mono text-[9px] font-bold italic"
+          modo="x4"
+          className="mx-auto mt-[3px] grid w-[170px] grid-cols-4 items-center gap-1 text-center font-mono text-[8px] font-bold italic leading-none"
         />
       </div>
     </div>
