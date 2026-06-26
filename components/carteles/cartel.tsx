@@ -3,6 +3,7 @@ import { esAgotarStock, formatPrecio, formatPesos } from "@/lib/cartel-utils"
 
 function separarFechaCartel(fecha: string) {
   const limpia = fecha.trim().toUpperCase()
+
   if (!limpia) return { dia: "", mes: "" }
 
   const partes = limpia.split(/\s+/)
@@ -37,19 +38,20 @@ function Vigencia({
     return <div className={className}>VÁLIDO HASTA AGOTAR STOCK</div>
   }
 
-  if (modo === "x4") {
-    const desdeF = separarFechaCartel(desde)
-    const hastaF = separarFechaCartel(hasta)
+if (modo === "x4") {
+  const desdeF = separarFechaCartel(desde)
+  const hastaF = separarFechaCartel(hasta)
 
-    return (
-      <div className={`${className} relative h-[12px]`}>
-        <span className="absolute left-[44px]">{desdeF.dia}</span>
-        <span className="absolute left-[82px]">{desdeF.mes}</span>
-        <span className="absolute left-[150px]">{hastaF.dia}</span>
-        <span className="absolute left-[190px]">{hastaF.mes}</span>
-      </div>
-    )
-  }
+  return (
+    <div className={`${className} relative h-[12px]`}>
+      <span className="absolute left-[0px]">{desdeF.dia}</span>
+      <span className="absolute left-[42px]">{desdeF.mes}</span>
+
+      <span className="absolute left-[108px]">{hastaF.dia}</span>
+      <span className="absolute left-[150px]">{hastaF.mes}</span>
+    </div>
+  )
+}
 
   return (
     <div className={className}>
@@ -213,12 +215,12 @@ function CartelX4({ p }: { p: Producto }) {
           {p.ahorro > 0 && <span>Ahorro: {formatPesos(p.ahorro)}</span>}
         </div>
 
-        <Vigencia
-          desde={p.desde}
-          hasta={p.hasta}
-          modo="x4"
-          className="mt-[7px] font-mono text-[8px] font-bold italic leading-none"
-        />
+   <Vigencia
+  desde={p.desde}
+  hasta={p.hasta}
+  modo="x4"
+  className="mx-auto mt-[7px] w-[190px] font-mono text-[8px] font-bold italic leading-none"
+/>
       </div>
     </div>
   )
