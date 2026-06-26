@@ -219,7 +219,7 @@ function CartelX4({ p }: { p: Producto }) {
   desde={p.desde}
   hasta={p.hasta}
   modo="x4"
-  className="mx-auto mt-[5px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
+  className="mx-auto mt-[25px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
 />
       </div>
     </div>
