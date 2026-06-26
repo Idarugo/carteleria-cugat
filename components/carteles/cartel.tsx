@@ -44,11 +44,11 @@ if (modo === "x4") {
 
   return (
     <div className={`${className} relative h-[12px]`}>
-      <span className="absolute left-[25px]">{desdeF.dia}</span>
-      <span className="absolute left-[63px]">{desdeF.mes}</span>
+      <span className="absolute left-[27px]">{desdeF.dia}</span>
+      <span className="absolute left-[66px]">{desdeF.mes}</span>
 
-      <span className="absolute left-[142px]">{hastaF.dia}</span>
-      <span className="absolute left-[179px]">{hastaF.mes}</span>
+      <span className="absolute left-[148px]">{hastaF.dia}</span>
+      <span className="absolute left-[185px]">{hastaF.mes}</span>
     </div>
   )
 }
@@ -219,7 +219,7 @@ function CartelX4({ p }: { p: Producto }) {
   desde={p.desde}
   hasta={p.hasta}
   modo="x4"
-  className="mx-auto mt-[15px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
+  className="mx-auto mt-[20px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
 />
       </div>
     </div>
