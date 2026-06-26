@@ -30,12 +30,27 @@ function Vigencia({
   desde: string
   hasta: string
   className?: string
-  modo?: "normal" | "x4"
+  modo?: "normal" | "x2" | "x4"
 }) {
   if (!desde && !hasta) return null
 
   if (hasta && esAgotarStock(hasta)) {
     return <div className={className}>VÁLIDO HASTA AGOTAR STOCK</div>
+  }
+
+  if (modo === "x2") {
+    const desdeF = separarFechaCartel(desde)
+    const hastaF = separarFechaCartel(hasta)
+
+    return (
+      <div className={`${className} relative h-[12px] translate-y-[5px]`}>
+        <span className="absolute left-[42px]">{desdeF.dia}</span>
+        <span className="absolute left-[92px]">{desdeF.mes}</span>
+
+        <span className="absolute left-[230px]">{hastaF.dia}</span>
+        <span className="absolute left-[282px]">{hastaF.mes}</span>
+      </div>
+    )
   }
 
   if (modo === "x4") {
@@ -175,7 +190,8 @@ function CartelX2({ p }: { p: Producto }) {
         <Vigencia
           desde={p.desde}
           hasta={p.hasta}
-          className="mt-5 font-mono text-[14px] font-bold italic"
+          modo="x2"
+          className="mt-[34px] w-[360px] font-mono text-[11px] font-extrabold italic leading-none tracking-tight"
         />
       </div>
     </div>
