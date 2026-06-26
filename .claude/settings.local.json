@@ -12,7 +12,10 @@
       "Bash(npm -v)",
       "Bash(grep -E \"^\\(motion|framer-motion|@tanstack|@zxing\\)$\")",
       "Bash(npm install *)",
-      "Bash(curl -s \"https://cugat.cl/wp-json/wc/store/v1/products?on_sale=true&per_page=2\")"
+      "Bash(curl -s \"https://cugat.cl/wp-json/wc/store/v1/products?on_sale=true&per_page=2\")",
+      "Bash(node -e \"console.log\\('motion react ->', require.resolve\\('motion/react'\\)\\)\")",
+      "Bash(node -e \"const p=require\\('./node_modules/motion/package.json'\\); console.log\\('motion version', p.version\\)\")",
+      "Bash(node -e \"const p=require\\('./node_modules/@tanstack/react-query/package.json'\\); console.log\\('rq version', p.version\\)\")"
     ]
   }
 }

@@ -43,7 +43,7 @@ if (modo === "x4") {
   const hastaF = separarFechaCartel(hasta)
 
   return (
-    <div className={`${className} relative h-[12px]`}>
+<div className={`${className} relative h-[20px] translate-y-[5px]`}>
       <span className="absolute left-[30px]">{desdeF.dia}</span>
       <span className="absolute left-[70px]">{desdeF.mes}</span>
 
@@ -219,7 +219,7 @@ function CartelX4({ p }: { p: Producto }) {
   desde={p.desde}
   hasta={p.hasta}
   modo="x4"
-  className="mx-auto mt-[55px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
+  className="mx-auto mt-[45px] w-[205px] font-mono text-[8px] font-bold italic leading-none"
 />
       </div>
     </div>
