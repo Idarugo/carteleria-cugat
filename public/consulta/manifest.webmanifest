@@ -1,0 +1,28 @@
+{
+  "name": "Cugat · Consulta Precio",
+  "short_name": "Consulta Precio",
+  "description": "Escanea el código de barras y consulta el precio de cualquier producto de Cugat al instante.",
+  "id": "/consulta",
+  "start_url": "/consulta",
+  "scope": "/consulta",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "categories": ["shopping", "business"],
+  "lang": "es-CL",
+  "icons": [
+    {
+      "src": "/consulta/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/consulta/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

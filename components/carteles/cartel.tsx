@@ -43,7 +43,7 @@ if (modo === "x4") {
   const hastaF = separarFechaCartel(hasta)
 
   return (
-<div className={`${className} relative h-[20px] translate-y-[5px]`}>
+<div className={`${className} relative h-[40px] translate-y-[5px]`}>
       <span className="absolute left-[30px]">{desdeF.dia}</span>
       <span className="absolute left-[70px]">{desdeF.mes}</span>
 
